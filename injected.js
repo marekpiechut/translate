@@ -1,15 +1,16 @@
+translateMe = {}
 
-pages = {
+translateMe.pages = {
 	listener: function(msg) {
 		if(msg.name === 'translate_selected') {
-			var text = pages.getSelectedText();
+			var text = translateMe.pages.getSelectedText();
 			var url = window.location.href;
 			var response = {text: text, url: url};
 			safari.self.tab.dispatchMessage('translate_text', response);
 		} else if(msg.name === 'show_translated' && !msg.shown)  {
 			var translation = msg.message;
 			log.debug("Showing translation: " + JSON.stringify(translation));			
-			ui.showTranslated(translation);
+			translateMe.ui.showTranslated(translation);
 			msg.shown = true;
 		}
 	},
@@ -20,4 +21,4 @@ pages = {
 	}
 }
 
-safari.self.addEventListener('message', pages.listener, false);
+safari.self.addEventListener('message', translateMe.pages.listener, false);
