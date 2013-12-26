@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Marek Piechut</string>
+	<key>Builder Version</key>
+	<string>9537.73.11</string>
+	<key>CFBundleDisplayName</key>
+	<string>TranslateMe</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.github.marekpiechut.translate</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Database Quota</key>
+		<real>1048576</real>
+		<key>Global Page</key>
+		<string>translate.html</string>
+		<key>Toolbar Items</key>
+		<array>
+			<dict>
+				<key>Command</key>
+				<string>translate</string>
+				<key>Identifier</key>
+				<string>translate_button</string>
+				<key>Image</key>
+				<string>res/toolbar_icon.png</string>
+				<key>Label</key>
+				<string>Translate</string>
+				<key>Palette Label</key>
+				<string>Translate Me</string>
+				<key>Tool Tip</key>
+				<string>Translate selected text</string>
+			</dict>
+		</array>
+	</dict>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict>
+			<key>End</key>
+			<array>
+				<string>prevel.js</string>
+				<string>config.js</string>
+				<string>utils.js</string>
+				<string>injected.js</string>
+			</array>
+		</dict>
+		<key>Stylesheets</key>
+		<array>
+			<string>translate.css</string>
+		</array>
+	</dict>
+	<key>Description</key>
+	<string>Translate selected text right in place</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>All</string>
+		</dict>
+	</dict>
+	<key>Website</key>
+	<string>http://marekpiechut.github.io/translate</string>
+</dict>
+</plist>
