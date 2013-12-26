@@ -12,10 +12,14 @@ translate = {
 	},
 	
 	translationRequestListener: function(e) {
-		if(e.name === 'translate') {
-			var text = e.message;
-			log.debug('Received message to translate: ' + text);
-			translator.translate(text, config.target, config.source, translate.showTranslation);
+		if(e.name === 'translate_text') {
+			var msg = e.message;
+			msg.source = config.source;
+			msg.target = config.target;
+			log.debug('Received message to translate: ' + msg.text);
+			translator.translate(msg, translate.showTranslation);
+		} else if(e.name === 'translate') {
+			safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('translate_selected');
 		}
 	}
 }

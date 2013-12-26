@@ -1,52 +1,61 @@
+.translateMe_clean {
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+	font-size: 100% !important;
+	font: inherit !important;
+	vertical-align: baseline !important;
+	list-style-type: none !important;
+	list-style-image: none !important;
+	line-height: normal !important;
+}
 
 div#translateMe_popup {
 	display: none;
-	max-width: 300px;
-	min-width: 120px;
-	max-height: 130px;
-	min-height: 10px;
+	max-width: 300px !important;
+	min-width: 120px !important;
+	max-height: 130px !important;
+	min-height: 10px !important;
 
-	background-color: #eeeeee;
-	box-shadow: 2px 2px 2px rgba(150, 150, 150, 0.35);
-	border: 1px solid rgb(214, 214, 214);
-	border-radius: 3px;
+	background-color: #eeeeee !important;
+	box-shadow: 2px 2px 2px rgba(150, 150, 150, 0.35) !important;
+	border: 1px solid rgb(214, 214, 214) !important;
+	border-radius: 3px !important;
 
-	position: fixed;
-	z-index: 9999;
+	position: fixed !important;
+	z-index: 9999 !important;
 	left: 10px;
 	top: 10px;
 	
-	font-family: 'Bitstream Vera Sans', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
-	font-size: 12px;
+	font-family: 'Bitstream Vera Sans', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif !important;
+	font-size: 12px !important;
 }
 
 div#translateMe_popup_list {
-	display: table-cell;
-	height: 100%;
-	margin-right: 2px;
-	vertical-align: top;
-	padding: 4px;
+	display: table-cell !important;
+	height: 100% !important;
+	margin-right: 2px !important;
+	vertical-align: top !important;
+	padding: 4px !important;
 }
 
-div#translateMe_popup ul {
-	padding: 4px;
+ul.translateMe_popup_list {
+	padding: 4px !important;
 }
 
-div#translateMe_popup li {
-	list-style-type: none;
-	line-height: 16px !important;
+li.translateMe_popup_list {
 }
 
 div#translateMe_popup_menu {
-	display: table-cell;
-	min-width: 22px;
-	max-width: 22px;
-	height: 100%;
-	padding: 4px;
+	display: table-cell !important;
+	min-width: 22px !important;
+	max-width: 22px !important;
+	height: 100% !important;
+	padding: 4px !important;
 	
-	border-right: 1px solid #D9D9D9;
+	border-right: 1px solid #D9D9D9 !important;
 }
 
 div#translateMe_popup_listen img {
-	display: table-cell;
+	display: table-cell !important;
 }
