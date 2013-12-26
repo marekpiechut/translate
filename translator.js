@@ -14,6 +14,9 @@ translator = {
 			dataType: 'jsonp',
 			success: function(json) {
 				var translation = JSON.parse(json);
+				translation.text = text;
+				translation.listenUrl = translator.getListenUrl(text, translation.src);
+				translation.translatePageUrl = translator.getTranslatePageUrl(data.url, to, from);
 				callback(translation);
 			}
 		})

@@ -4,6 +4,9 @@ ui = {
 		var list = pl('div#translateMe_popup_list_main').get();
 		list.innerHTML = html;
 	
+		pl('audio#translateMe_popup_menu_listen_audio').attr('src', message.listenUrl);
+		pl('a#translateMe_popup_menu_translate_page').attr('href', message.translatePageUrl);
+		
 		var popup = pl('div#translateMe_popup');
 		popup.css('display', 'block');
 	
@@ -59,8 +62,13 @@ ui = {
 	appendPopup: function() {
 		pl('body').append('<div id="translateMe_popup" class="translateMe_clean  translateMe_popup">' +
 			'<div id="translateMe_popup_menu" class="translateMe_clean">' + 
-			'<div class="translateMe_clean"><img width="22px" height="22px" src="' + safari.extension.baseURI + 'res/listen.png"/></div>' +
-			'<div class="translateMe_clean"><img width="22px" height="22px" src="' + safari.extension.baseURI + 'res/translate_whole.png"/></div>' +
+			'<div class="translateMe_clean"><a href="" id="translateMe_popup_menu_listen" class="translateMe_clean" ' +
+			'onclick="var audio = document.getElementById(\'translateMe_popup_menu_listen_audio\'); audio.currentTime=0; audio.play(); return false;">' +
+			'<img width="22px" height="22px" src="' + safari.extension.baseURI + 'res/listen.png"/>' +
+			'</a><audio src="" id="translateMe_popup_menu_listen_audio" style="display: none; visibility: hidden;"></audio></div>' +
+			'<div class="translateMe_clean"><a href="" id="translateMe_popup_menu_translate_page" class="translateMe_clean">' +
+			'<img width="22px" height="22px" src="' + safari.extension.baseURI + 'res/translate_whole.png"/>' +
+			'</a></div>' +
 			'</div>' +
 			'<div id="translateMe_popup_list" class="translateMe_clean"><div id="translateMe_popup_list_main" class="translateMe_clean"></div></div>' +
 			'</div>').html();
