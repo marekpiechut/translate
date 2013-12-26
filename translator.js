@@ -12,12 +12,6 @@ translator = {
 			url: url,
 			type: 'GET',
 			dataType: 'jsonp',
-			// data: {
-			// 	text: text,
-			// 	sl: from,
-			// 	tl: to,
-			// 	client: 'x'
-			// },
 			success: function(json) {
 				var translation = JSON.parse(json);
 				callback(translation);

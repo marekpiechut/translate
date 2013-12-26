@@ -50,6 +50,7 @@
 				<string>config.js</string>
 				<string>utils.js</string>
 				<string>injected.js</string>
+				<string>injected_ui.js</string>
 			</array>
 		</dict>
 		<key>Stylesheets</key>
