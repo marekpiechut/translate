@@ -22,7 +22,7 @@ div#translateMe_popup {
 	border: 1px solid rgb(214, 214, 214) !important;
 	border-radius: 3px !important;
 
-	position: fixed !important;
+	position: absolute !important;
 	z-index: 9999 !important;
 	left: 10px;
 	top: 10px;

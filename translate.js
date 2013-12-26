@@ -8,7 +8,6 @@ translate = {
 	
 	showTranslation: function(data) {
 		log.debug("Received translation: " + JSON.stringify(data));
-		// data.listenUrl = translator.getListenUrl()
 		safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('show_translated', data);
 	},
 	
