@@ -46,6 +46,10 @@ ul.translateMe_popup_list {
 li.translateMe_popup_list {
 }
 
+div.translateMe_popup_dict_list {
+	padding: 0px 4px 4px 4px !important;
+}
+
 div#translateMe_popup_menu {
 	display: table-cell !important;
 	min-width: 22px !important;
