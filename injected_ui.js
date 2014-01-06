@@ -1,3 +1,4 @@
+
 translateMe.ui = {
 	showTranslated: function(message) {
 		var html = translateMe.ui.formatTranslation(message);
@@ -21,8 +22,8 @@ translateMe.ui = {
 
 		var popupWidth  = pl('div#translateMe_popup').attr('offsetWidth');
 
-		var x = (rect.left + rect.width / 2) - popupWidth / 2;
-		var y = rect.bottom + 6;
+		var x = (rect.left + window.scrollX + rect.width / 2) - popupWidth / 2;
+		var y = rect.bottom + window.scrollY + 6;
 	
 		return {x: x, y: y};
 	},
@@ -64,8 +65,8 @@ translateMe.ui = {
 			'<div id="translateMe_popup_menu" class="translateMe_clean">' + 
 			'<div class="translateMe_clean"><a href="" id="translateMe_popup_menu_listen" class="translateMe_clean" ' +
 			'onclick="' + 
-			'var audio = document.getElementById(\'translateMe_popup_menu_listen_audio\');' +
-			' audio.pause(); audio.currentTime=0; audio.play(); return false;' +
+			'var audio = document.getElementById(\'translateMe_popup_menu_listen_audio\');' + 
+			'audio.pause(); audio.currentTime=0; audio.play(); return false;' +
 			'">' +
 			'<img width="22px" height="22px" src="' + safari.extension.baseURI + 'res/listen.png"/>' +
 			'</a><audio src="" id="translateMe_popup_menu_listen_audio" style="display: none; visibility: hidden;"></audio></div>' +
