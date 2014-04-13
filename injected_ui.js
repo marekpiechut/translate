@@ -14,6 +14,15 @@ translateMe.ui = {
 		var pos = translateMe.ui.calculatePopupPosition();
 		popup.css('top', pos.y);
 		popup.css('left', pos.x);
+		
+		pl('div#translateMe_blanket').attr('width', document.width);
+		pl('div#translateMe_blanket').attr('height', document.height);
+	},
+	
+	hidePopup: function(e) {
+		pl('div#translateMe_popup').css('display', 'none');
+		// alert(event.target)
+		e.stopPropagation()
 	},
 
 	calculatePopupPosition: function() {
@@ -48,7 +57,7 @@ translateMe.ui = {
 		pl.each(dict, function(k, v) {
 			html += '<div class="translateMe_clean translateMe_popup_dict_elem"><div class="translateMe_clean translateMe_popup_dict_elem_type">';
 			html += capitalize(v.pos);
-			html += '</div><div class="translateMe_clean translateMe_popup_dict_elem_terms">'
+			html += ':</div><div class="translateMe_clean translateMe_popup_dict_elem_terms">'
 			pl.each(this.terms, function(k, v) {
 				html += v + ', ';
 			})
@@ -75,7 +84,7 @@ translateMe.ui = {
 			'</a></div>' +
 			'</div>' +
 			'<div id="translateMe_popup_list" class="translateMe_clean"><div id="translateMe_popup_list_main" class="translateMe_clean"></div></div>' +
-			'</div>').html();
+			'</div><div id="translateMe_blanket"></div>').html();
 	},
 	
 	registerKey: function() {
@@ -89,3 +98,4 @@ translateMe.ui = {
 
 translateMe.ui.appendPopup();
 translateMe.ui.registerKey();
+//pl('body').bind('mousedown', translateMe.ui.hidePopup);

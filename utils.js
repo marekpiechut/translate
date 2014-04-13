@@ -1,5 +1,4 @@
-
-log = {
+var log = {
 	loglevel: 9,
 	
 	debug: function(msg) {
@@ -31,5 +30,16 @@ log = {
 }
 
 function capitalize(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+	return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function fireEventToTabs(eventName, message) {
+	var windows = safari.application.browserWindows;
+	for(i = 0; i < windows.length; i++){
+	    var tabs = windows[i].tabs;
+	    for(j = 0; j<tabs.length; j++){
+	         var tab = tabs[j];
+	         tab.page.dispatchMessage(eventName, message);
+	    }
+	}
 }

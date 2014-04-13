@@ -63,3 +63,13 @@ div#translateMe_popup_menu {
 div#translateMe_popup_listen img {
 	display: table-cell !important;
 }
+
+div#translateMe_blanket {
+	z-index: 9998 !important;
+	visibility:hidden !important;
+	position: absolute !important;
+	top: 0 !important;
+	left: 0 !important;
+	height: 100% !important;
+	width: 100% !important;
+}

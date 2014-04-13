@@ -1,0 +1,6 @@
+translator.translate = function(data, callback){
+	var dummy = JSON.parse('{"sentences":[{"trans":"koza","orig":"powerful","translit":"","src_translit":""}],"dict":[{"pos":"adjective","terms":["potężny","silny","mocny","skuteczny","ogromny","możny"],"entry":[{"word":"potężny","reverse_translation":["powerful","mighty","huge","strong","potent","formidable"],"score":0.10215643},{"word":"silny","reverse_translation":["strong","powerful","severe","potent","smart","high"],"score":0.034756977},{"word":"mocny","reverse_translation":["strong","powerful","fast","firm","hefty","tough"],"score":0.029268308},{"word":"skuteczny","reverse_translation":["effective","efficient","powerful","efficacious","effectual","potent"],"score":0.0033880526},{"word":"ogromny","reverse_translation":["huge","enormous","tremendous","immense","vast","powerful"],"score":0.00036272159},{"word":"możny","reverse_translation":["mighty","powerful"],"score":7.6030577e-05}],"base_form":"powerful","pos_enum":3}],"src":"en","server_time":21}');
+	dummy.listenUrl = this.getListenUrl(text, dummy.src);
+	dummy.translatePageUrl = this.getTranslatePageUrl();
+	callback(dummy);
+}

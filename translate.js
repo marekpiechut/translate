@@ -1,5 +1,5 @@
 
-translate = {
+var translate = {
 	commandListener: function(e) {
 		if(e.command === 'translate') {
 			safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('translate_selected');
@@ -21,8 +21,16 @@ translate = {
 		} else if(e.name === 'translate') {
 			safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('translate_selected');
 		}
+	},
+	
+	configChangeListener: function(e) {
+		log.debug('Config changed')
+		config.update(e.key, e.newValue);
+		fireEventToTabs('config', {key: e.key, val: e.newValue});
 	}
 }
 
 safari.application.addEventListener("command", translate.commandListener, false);
 safari.application.activeBrowserWindow.activeTab.addEventListener("message", translate.translationRequestListener, false);
+safari.extension.settings.addEventListener("change", translate.configChangeListener, false);
+

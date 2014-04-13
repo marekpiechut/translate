@@ -1,6 +1,6 @@
-translateMe = {}
+var translateMe = {};
 
-translateMe.pages = function(){
+translateMe.pages = function() {
 	var listeners = {
 		translate_selected: function(msg) {
 			var text = translateMe.pages.getSelectedText();
@@ -16,7 +16,7 @@ translateMe.pages = function(){
 				translateMe.ui.showTranslated(translation);
 				msg.shown = true;
 			}
-		}
+		},
 	}
 	
 	return {
@@ -24,6 +24,11 @@ translateMe.pages = function(){
 			if (window.top === window) {
 				var fn = listeners[msg.name] || function(msg) {log.error("no page listener for name: " + msg.name)};
 				fn(msg);
+			} 
+			
+			if(msg.name === "config") {
+				log.debug('Updating config: ' + JSON.stringify(msg.message));
+				config.update(msg.message.key, msg.message.val);
 			}
 		},
 	

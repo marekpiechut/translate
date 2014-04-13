@@ -1,4 +1,4 @@
-translator = {
+var translator = {
 	translate: function(data, callback) {
 		var result;
 		var from = data.from || 'auto';
