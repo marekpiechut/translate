@@ -22,6 +22,19 @@
 		<real>1048576</real>
 		<key>Global Page</key>
 		<string>translate.html</string>
+		<key>Popovers</key>
+		<array>
+			<dict>
+				<key>Filename</key>
+				<string>popup.html</string>
+				<key>Height</key>
+				<real>130</real>
+				<key>Identifier</key>
+				<string>translation</string>
+				<key>Width</key>
+				<real>300</real>
+			</dict>
+		</array>
 		<key>Toolbar Items</key>
 		<array>
 			<dict>
@@ -31,10 +44,14 @@
 				<string>translate_button</string>
 				<key>Image</key>
 				<string>res/toolbar_icon.png</string>
+				<key>Include By Default</key>
+				<true/>
 				<key>Label</key>
 				<string>Translate</string>
 				<key>Palette Label</key>
 				<string>Translate Me</string>
+				<key>Popover</key>
+				<string>translation</string>
 				<key>Tool Tip</key>
 				<string>Translate selected text</string>
 			</dict>
