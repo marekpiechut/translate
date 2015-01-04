@@ -1,51 +1,57 @@
-translateMe.log = (function (self) {
-  var _loglevel = 9;
+(function(App) {
+	"use strict";
 
-  self.debug = function (msg) {
-    this.log(2, msg);
-  };
+	App.utils = {
+		createLogger: function(out) {
+			var out1 = out;
 
-  self.info = function (msg) {
-    this.log(1, msg);
-  };
+			function isEnabled(logger, level) {
+				return logger.level >= level;
+			}
 
-  self.error = function (msg) {
-    this.log(0, msg);
-  };
+			function output(str) {
+				out1(str);
+			}
 
-  self.log = function (level, msg) {
-    if (_isEnabled(level)) {
-      _output(msg);
-    }
-  };
+			return {
+				level: 9,
 
-  function _isEnabled(level) {
-    var loglevel = _loglevel || 1;
-    return level <= loglevel;
-  }
+				debug: function(msg) {
+					this.log(2, msg);
+				},
 
-  function _output(str) {
-    console.log(str);
-  }
+				info: function(msg) {
+					this.log(1, msg);
+				},
 
-  return self;
-}(translateMe.log || {}));
+				error: function(msg) {
+					this.log(0, msg);
+				},
 
-translateMe.util = (function (self) {
-  self.capitalize = function (string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
+				log: function(level, msg) {
+					if (isEnabled(this, level)) {
+						output(msg);
+					}
+				},
+			};
+		},
 
-  self.fireEventToTabs = function (eventName, message) {
-    var windows = safari.application.browserWindows;
-    for (i = 0; i < windows.length; i++) {
-      var tabs = windows[i].tabs;
-      for (j = 0; j < tabs.length; j++) {
-        var tab = tabs[j];
-        tab.page.dispatchMessage(eventName, message);
-      }
-    }
-  };
+		capitalize: function(string) {
+			return string.charAt(0).toUpperCase() + string.slice(1);
+		}
+	};
 
-  return self;
-}(translateMe.util || {}));
+	App.utils.safari = {
+		fireEventToTabs: function(eventName, message) {
+			var windows = safari.application.browserWindows,
+				i;
+			for (i = 0; i < windows.length; i++) {
+				var tabs = windows[i].tabs;
+				for (j = 0; j < tabs.length; j++) {
+					var tab = tabs[j];
+					tab.page.dispatchMessage(eventName, message);
+				}
+			}
+		}
+	}
+}(TRANSLATE));

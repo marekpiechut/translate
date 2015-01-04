@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Marek Piechut</string>
 	<key>Builder Version</key>
-	<string>9537.75.14</string>
+	<string>10600.2.5</string>
 	<key>CFBundleDisplayName</key>
 	<string>TranslateMe</string>
 	<key>CFBundleIdentifier</key>
@@ -51,6 +51,7 @@
 				<string>utils.js</string>
 				<string>injected.js</string>
 				<string>injected_ui.js</string>
+				<string>init.js</string>
 			</array>
 		</dict>
 		<key>Stylesheets</key>
@@ -60,6 +61,8 @@
 	</dict>
 	<key>Description</key>
 	<string>Translate selected text right in place</string>
+	<key>DeveloperIdentifier</key>
+	<string>H6AP27PW23</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>

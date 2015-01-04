@@ -1,6 +1,6 @@
-var translateMe = translateMe || {};
+var TRANSLATE = TRANSLATE || {};
 
-translateMe.ui = (function (self) {
+TRANSLATE.ui = (function (self) {
 
   function _calculatePopupPosition() {
     var s = window.getSelection();
@@ -40,7 +40,7 @@ translateMe.ui = (function (self) {
     pl.each(dict, function (k, v) {
       html +=
         '<div class="translateMe_clean translateMe_popup_dict_elem"><div class="translateMe_clean translateMe_popup_dict_elem_type">';
-      html += translateMe.util.capitalize(v.pos);
+      html += TRANSLATE.utils.capitalize(v.pos);
       html +=
         ':</div><div class="translateMe_clean translateMe_popup_dict_elem_terms">';
       pl.each(this.terms, function (k, v) {
@@ -77,7 +77,7 @@ translateMe.ui = (function (self) {
 
   function _registerKey() {
     pl('body').bind('keydown', function (e) {
-      if (e.keyCode == translateMe.config.key) {
+      if (e.keyCode == TRANSLATE.config.key) {
         safari.self.tab.dispatchMessage('translate');
       }
     });
@@ -113,6 +113,6 @@ translateMe.ui = (function (self) {
   };
 
   return self;
-}(translateMe.ui || {}));
+}(TRANSLATE.ui || {}));
 
-translateMe.ui.init();
+TRANSLATE.ui.init();

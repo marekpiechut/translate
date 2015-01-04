@@ -1,10 +1,8 @@
-var translateMe = translateMe || {};
-
-translateMe.translator = (function (self) {
-	var log = translateMe.log;
+TRANSLATE.translator = (function (self) {
+	var log = TRANSLATE.log;
 
   function _prepareUrl(text, to, from) {
-    var url = translateMe.config.serviceUrl;
+    var url = TRANSLATE.config.serviceUrl;
     url = url.replace('{text}', text);
     url = url.replace('{from}', from);
     url = url.replace('{to}', to);
@@ -38,7 +36,7 @@ translateMe.translator = (function (self) {
     var to = data.to;
 
     var url = _prepareUrl(text, to, from);
-    log.debug("Calling URL: " + url);
+    TRANSLATE.log.debug("Calling URL: " + url);
     pl.ajax({
       async: false,
       url: url,
@@ -56,4 +54,4 @@ translateMe.translator = (function (self) {
   };
 
   return self;
-}(translateMe.translator || {}));
+}(TRANSLATE.translator || {}));

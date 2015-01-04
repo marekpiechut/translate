@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Unit tests</title>
-  <link rel="stylesheet" href="test/qunit.css">
+	<meta charset="utf-8">
+	<title>Unit tests</title>
+	<link rel="stylesheet" href="test/qunit.css">
 </head>
 <body>
-  <div id="qunit"></div>
-  <div id="qunit-fixture"></div>
+	<div id="qunit"></div>
+	<div id="qunit-fixture"></div>
+
+	<script>
+		var TRANSLATE = {}
+	</script>
 	
 	<!-- Keep the same as in translate.html file -->
 	<script src="prevel.js"></script>
@@ -16,7 +20,9 @@
 	<script src="translator.js"></script>
 	<script src="translate.js"></script>
 	
-  <script src="test/qunit.js"></script>
-  <script src="test/tests.js"></script>
+	<script src="test/qunit.js"></script>
+
+	<!-- Individual test sources -->
+	<script src="test/utils_test.js"></script>
 </body>
 </html>

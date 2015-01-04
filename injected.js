@@ -1,7 +1,6 @@
-var translateMe = translateMe || {};
+var TRANSLATE = TRANSLATE || {};
 
-translateMe.pages = (function (self) {
-  var log = translateMe.log;
+TRANSLATE.pages = (function (self) {
 
   var listeners = {
     translate_selected: function (msg) {
@@ -17,8 +16,8 @@ translateMe.pages = (function (self) {
     show_translated: function (msg) {
       if (!msg.shown) {
         var translation = msg.message;
-        log.debug("Showing translation: " + JSON.stringify(translation));
-        translateMe.ui.showTranslated(translation);
+        TRANSLATE.log.debug("Showing translation: " + JSON.stringify(translation));
+        TRANSLATE.ui.showTranslated(translation);
         msg.shown = true;
       }
     },
@@ -27,14 +26,14 @@ translateMe.pages = (function (self) {
   function _listener(msg) {
     if (window.top === window) {
       var fn = listeners[msg.name] || function (msg) {
-          log.error("no page listener for name: " + msg.name);
+          TRANSLATE.log.error("no page listener for name: " + msg.name);
         };
       fn(msg);
     }
 
     if (msg.name === "config") {
-      log.debug('Updating config: ' + JSON.stringify(msg.message));
-      translateMe.config.update(msg.message.key, msg.message.val);
+      TRANSLATE.log.debug('Updating config: ' + JSON.stringify(msg.message));
+      TRANSLATE.config.update(msg.message.key, msg.message.val);
     }
   }
 
@@ -48,6 +47,6 @@ translateMe.pages = (function (self) {
       safari.self.addEventListener('message', _listener, false);
     }
   };
-}(translateMe.pages || {}));
+}(TRANSLATE.pages || {}));
 
-translateMe.pages.init();
+TRANSLATE.pages.init();
