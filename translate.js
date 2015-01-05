@@ -8,6 +8,7 @@
 
 	function _showTranslation(data) {
 		TRANSLATE.log.debug("Received translation: " + JSON.stringify(data));
+		safari.extension.popovers[0].contentWindow.TRANSLATE.popup.dataChanged(data);
 		safari.extension.toolbarItems[0].showPopover();
 	}
 

@@ -28,11 +28,11 @@
 				<key>Filename</key>
 				<string>popup.html</string>
 				<key>Height</key>
-				<real>130</real>
+				<real>150</real>
 				<key>Identifier</key>
 				<string>translation</string>
 				<key>Width</key>
-				<real>300</real>
+				<real>350</real>
 			</dict>
 		</array>
 		<key>Toolbar Items</key>
@@ -63,12 +63,13 @@
 		<dict>
 			<key>End</key>
 			<array>
-				<string>prevel.js</string>
 				<string>config.js</string>
 				<string>utils.js</string>
 				<string>injected.js</string>
-				<string>injected_ui.js</string>
-				<string>init.js</string>
+			</array>
+			<key>Start</key>
+			<array>
+				<string>prevel.js</string>
 			</array>
 		</dict>
 		<key>Stylesheets</key>
