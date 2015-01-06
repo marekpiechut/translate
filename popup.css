@@ -11,8 +11,17 @@ div.main {
 
 div.buttons {
 	display: table-cell;
-	min-width: 22px;
-	max-width: 22px;
+}
+
+div.button {
+	text-align: center;
+}
+
+img.button {
+	margin-left: auto;
+	margin-right: auto;
+	min-width: 18px;
+	max-width: 18px;
 }
 
 a.button {
@@ -34,24 +43,22 @@ div.original {
 	border-bottom: 1px solid grey;
 }
 
+div.translations {
+	padding-top: 6px;
+}
+
+div.dictionary_word {
+	padding-top: 4px;
+}
+
 ul {
 	list-style-type: none;
-	padding-left: 0;
+	padding: 0;
+	margin: 0;
 }
 
 div.word_type {
 	font-weight: bold;
 }
 
-div#translateMe_popup_menu {
-	display: table-cell !important;
-	min-width: 22px !important;
-	max-width: 22px !important;
-	height: 100% !important;
-	padding: 4px !important;
-}
-
-div#translateMe_popup_listen img {
-	display: table-cell !important;
-}
 

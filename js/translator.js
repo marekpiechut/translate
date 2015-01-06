@@ -77,7 +77,7 @@ TRANSLATE.translator = (function(self) {
 			success: function(json) {
 				var response = JSON.parse(json);
 				var translation = _toModel(response);
-				translation.text = text;
+				translation.text = data.text;
 				translation.listenUrl = _getListenUrl(text, translation.src);
 				translation.translatePageUrl = _getTranslatePageUrl(data.url, to,
 					from);

@@ -2,10 +2,15 @@ var TRANSLATE = TRANSLATE || {};
 
 TRANSLATE.popup = (function() {
 	function setOriginalText(text) {
+		var displayText = unescape(text);
 		if (nullOrEmpty(text)) {
 			pl("div.original").text("Nothing selected.");
 		} else {
-			pl("div.original").text(unescape(text));
+			if(displayText.length > 35) {
+				displayText = displayText.substring(0, 34) + "...";
+			}
+			
+			pl("div.original").text(displayText);
 		}
 	};
 
@@ -29,12 +34,6 @@ TRANSLATE.popup = (function() {
 	}
 
 	function setupButtons(data) {
-		if (nullOrEmpty(data.listenUrl)) {
-			pl('a#listen').css('display', 'none');
-		} else {
-			pl('a#listen').css('display', 'block');
-		}
-
 		pl('a#listen').attr('href', data.listenUrl);
 		pl('a#translate_whole').attr('href', data.translatePageUrl);
 	}

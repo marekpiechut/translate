@@ -2,15 +2,11 @@ var TRANSLATE = TRANSLATE || {};
 
 TRANSLATE.pages = (function(self) {
 
+	var config = {};
+
 	var listeners = {
 		translate_selected: function(msg) {
-			var text = _getSelectedText();
-			var url = window.location.href;
-			var response = {
-				text: text,
-				url: url
-			};
-			safari.self.tab.dispatchMessage('translate_text', response);
+			_translateSelected();
 		},
 
 		show_translated: function(msg) {
@@ -28,31 +24,46 @@ TRANSLATE.pages = (function(self) {
 			pl(audio).attr('src', msg.message.href);
 			audio.currentTime = 0;
 			audio.play();
+		},
 
+		config: function(msg) {
+			TRANSLATE.log.debug('Updating config: ' + JSON.stringify(msg.message));
+			config = msg.message;
 		}
 	};
 
-	function _listener(msg) {
-		if (window.top === window) {
-			var fn = listeners[msg.name] || function(msg) {
-					TRANSLATE.log.error("no page listener for name: " + msg.name);
-				};
-			fn(msg);
-		}
+	function getConfig() {
+		return config;
+	}
 
-		if (msg.name === "config") {
-			TRANSLATE.log.debug('Updating config: ' + JSON.stringify(msg.message));
-			TRANSLATE.config.update(msg.message.key, msg.message.val);
-		}
+	function _listener(msg) {
+		var fn = listeners[msg.name] || function(msg) {
+				TRANSLATE.log.error("no page listener for name: " + msg.name);
+			};
+		fn(msg);
+	}
+
+	function _reloadConfig() {
+		safari.self.tab.dispatchMessage('get_config');
+	}
+
+	function _registerKey() {
+		pl('body').bind('keydown', function(e) {
+			if (e.keyCode == getConfig().key) {
+				_translateSelected();
+			}
+		});
 	}
 	
-	function _registerKey() {
-	    pl('body').bind('keydown', function (e) {
-	      if (e.keyCode == TRANSLATE.config.key) {
-	        safari.self.tab.dispatchMessage('translate');
-	      }
-	    });
-	  }
+	function _translateSelected() {
+		var text = _getSelectedText();
+		var url = window.location.href;
+		var response = {
+			text: text,
+			url: url
+		};
+		safari.self.tab.dispatchMessage('translate_text', response);
+	}
 
 	function _getSelectedText() {
 		var text = window.getSelection().toString();
@@ -61,7 +72,11 @@ TRANSLATE.pages = (function(self) {
 
 	return {
 		init: function() {
+			TRANSLATE.log = TRANSLATE.utils.createLogger(function(msg) {
+				console.log(msg)
+			});
 			safari.self.addEventListener('message', _listener, false);
+			_reloadConfig();
 			_registerKey();
 			pl('body').append('<audio src="" id="translateMe_popup_menu_listen_audio" style="display: none; visibility: hidden;"></audio>');
 		}

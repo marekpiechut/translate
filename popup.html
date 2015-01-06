@@ -1,21 +1,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
 	<head>
-		<link rel="stylesheet" href="translate.css" type="text/css">
+		<link rel="stylesheet" href="popup.css" type="text/css">
 		<script src="js/prevel.js" type="text/javascript"></script>
 		<script src="js/popup.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<div class='main'>
 			<div class='buttons'>
-				<a class='button' id='translate_whole' href="" title="Translate page"
-				 	onclick="TRANSLATE.popup.gotoHref(this.getAttribute('href')); return false;">
-					<img src="res/translate_whole.png"/>
-				</a>
-				<a class='button' id='listen' href="" title="Listen to original"
-					onclick="TRANSLATE.popup.playAudio(this.getAttribute('href')); return false;">
-					<img src="res/listen.png"/>
-				</a>
+				<div class="button">
+					<a class='button' id='translate_whole' href="" title="Translate page"
+					 	onclick="TRANSLATE.popup.gotoHref(this.getAttribute('href')); return false;">
+						<img class="button" src="res/translate_whole.svg"/>
+					</a>
+				</div>
+				<div class="button">
+					<a class='button' id='listen' href="" title="Listen to original"
+						onclick="TRANSLATE.popup.playAudio(this.getAttribute('href')); return false;">
+						<img class="button" src="res/listen.svg"/>
+					</a>
+				</div>
 			</div>
 			<div class='text'>
 				<div class='original'></div>
