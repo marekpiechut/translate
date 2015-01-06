@@ -62,6 +62,7 @@ TRANSLATE.pages = (function(self) {
 	return {
 		init: function() {
 			safari.self.addEventListener('message', _listener, false);
+			_registerKey();
 			pl('body').append('<audio src="" id="translateMe_popup_menu_listen_audio" style="display: none; visibility: hidden;"></audio>');
 		}
 	};
