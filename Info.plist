@@ -63,13 +63,13 @@
 		<dict>
 			<key>End</key>
 			<array>
-				<string>config.js</string>
-				<string>utils.js</string>
-				<string>injected.js</string>
+				<string>js/config.js</string>
+				<string>js/utils.js</string>
+				<string>js/injected.js</string>
 			</array>
 			<key>Start</key>
 			<array>
-				<string>prevel.js</string>
+				<string>js/prevel.js</string>
 			</array>
 		</dict>
 		<key>Stylesheets</key>
