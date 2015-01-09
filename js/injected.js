@@ -18,14 +18,6 @@ TRANSLATE.pages = (function(self) {
 			}
 		},
 
-		play_audio: function(msg) {
-			var audio = document.getElementById('translateMe_popup_menu_listen_audio');
-			audio.setAttribute('src', msg.message.href);
-			audio.pause();
-			audio.currentTime = 0;
-			audio.play();
-		},
-
 		config: function(msg) {
 			TRANSLATE.log.debug('Updating config: ' + JSON.stringify(msg.message));
 			config = msg.message;
@@ -70,12 +62,6 @@ TRANSLATE.pages = (function(self) {
 		return text;
 	}
 
-	function _appendAudioElement() {
-		var audio = document.createElement('audio');
-		audio.id = 'translateMe_popup_menu_listen_audio';
-		audio.style = 'display: none; visibility: hidden;';
-		document.body.appendChild(audio);
-	}
 
 	return {
 		init: function() {
@@ -85,7 +71,6 @@ TRANSLATE.pages = (function(self) {
 			safari.self.addEventListener('message', _listener, false);
 			_reloadConfig();
 			_registerKey();
-			_appendAudioElement();
 		}
 	};
 }(TRANSLATE.pages || {}));

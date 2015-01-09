@@ -77,18 +77,7 @@ TRANSLATE.popup = (function() {
 		},
 
 		playAudio: function(href) {
-			safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("play_audio", {href: href});
+			new Audio(href).play();
 		}
 	};
 })();
-
-// {
-// 	"trans": ["używany"],
-// 	"dict": [{
-// 		"form": "adjective",
-// 		"terms": ["używany", "wykorzystany", "nienowy", "zużyty", "przechodzony"]
-// 	}],
-// 	"text": "used",
-// 	"listenUrl": "http://translate.google.com/translate_tts?ie=UTF-8&q=used&tl=undefined&total=1&idx=0&len=4",
-// 	"translatePageUrl": "http://translate.google.com/translate?sl=auto&tl=pl&u=http%3A%2F%2Fqunitjs.com%2F&act=url"
-// }
