@@ -19,9 +19,9 @@ TRANSLATE.pages = (function(self) {
 		},
 
 		play_audio: function(msg) {
-			var audio = window.document.getElementById('translateMe_popup_menu_listen_audio');
+			var audio = document.getElementById('translateMe_popup_menu_listen_audio');
+			audio.setAttribute('src', msg.message.href);
 			audio.pause();
-			pl(audio).attr('src', msg.message.href);
 			audio.currentTime = 0;
 			audio.play();
 		},
@@ -48,13 +48,13 @@ TRANSLATE.pages = (function(self) {
 	}
 
 	function _registerKey() {
-		pl('body').bind('keydown', function(e) {
+		document.body.addEventListener('keydown', function(e) {
 			if (e.keyCode == getConfig().key) {
 				_translateSelected();
 			}
 		});
 	}
-	
+
 	function _translateSelected() {
 		var text = _getSelectedText();
 		var url = window.location.href;
@@ -70,6 +70,13 @@ TRANSLATE.pages = (function(self) {
 		return text;
 	}
 
+	function _appendAudioElement() {
+		var audio = document.createElement('audio');
+		audio.id = 'translateMe_popup_menu_listen_audio';
+		audio.style = 'display: none; visibility: hidden;';
+		document.body.appendChild(audio);
+	}
+
 	return {
 		init: function() {
 			TRANSLATE.log = TRANSLATE.utils.createLogger(function(msg) {
@@ -78,7 +85,7 @@ TRANSLATE.pages = (function(self) {
 			safari.self.addEventListener('message', _listener, false);
 			_reloadConfig();
 			_registerKey();
-			pl('body').append('<audio src="" id="translateMe_popup_menu_listen_audio" style="display: none; visibility: hidden;"></audio>');
+			_appendAudioElement();
 		}
 	};
 }(TRANSLATE.pages || {}));

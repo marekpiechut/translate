@@ -21,12 +21,9 @@ TRANSLATE.translator = (function(self) {
 
 	function _getListenUrl(text, lang) {
 		if (text != null && !pl.empty(text)) {
-			var url =
-				"http://translate.google.com/translate_tts?ie=UTF-8&q={text}&tl={lang}&total={wc}&idx=0&len={len}";
+			var url =	"http://translate.google.com/translate_tts?ie=UTF-8&q={text}&tl={lang}";
 			url = url.replace('{text}', text);
 			url = url.replace('{lang}', lang);
-			url = url.replace('{wc}', text.split(/\s+/).length);
-			url = url.replace('{len}', text.length);
 			return url;
 		} else {
 			return "";
@@ -35,6 +32,7 @@ TRANSLATE.translator = (function(self) {
 
 	function _toModel(response) {
 		var model = {
+			src: response.src,
 			trans: [],
 			dict: []
 		}
