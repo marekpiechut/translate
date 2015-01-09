@@ -19,7 +19,7 @@ TRANSLATE.translator = (function(self) {
 		return url;
 	}
 
-	function _getListenUrl(text, lang) {
+	function _getListenUrls(text, lang) {
 		if (text != null && !pl.empty(text)) {
 			var url =
 				"http://translate.google.com/translate_tts?ie=UTF-8&q={text}&tl={lang}&total={wc}&idx=0&len={len}";
@@ -79,7 +79,7 @@ TRANSLATE.translator = (function(self) {
 				var response = JSON.parse(json);
 				var translation = _toModel(response);
 				translation.text = data.text;
-				translation.listenUrl = _getListenUrl(text, translation.src);
+				translation.listenUrls = _getListenUrls(text, translation.src);
 				translation.translatePageUrl = _getTranslatePageUrl(data.url, to,
 					from);
 				callback(translation);
