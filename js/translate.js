@@ -41,7 +41,7 @@
 	self.init = function() {
 		safari.application.addEventListener(
 			"command", _commandListener, false);
-		safari.application.activeBrowserWindow.activeTab.addEventListener(
+		safari.application.addEventListener(
 			"message", _messageListener, false);
 		safari.extension.settings.addEventListener(
 			"change", _configChangeListener, false);

@@ -9,15 +9,6 @@ TRANSLATE.pages = (function(self) {
 			_translateSelected();
 		},
 
-		show_translated: function(msg) {
-			if (!msg.shown) {
-				var translation = msg.message;
-				TRANSLATE.log.debug("Showing translation: " + JSON.stringify(translation));
-				TRANSLATE.ui.showTranslated(translation);
-				msg.shown = true;
-			}
-		},
-
 		config: function(msg) {
 			TRANSLATE.log.debug('Updating config: ' + JSON.stringify(msg.message));
 			config = msg.message;
