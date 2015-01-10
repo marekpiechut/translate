@@ -29,10 +29,14 @@ TRANSLATE.pages = (function(self) {
 	function _reloadConfig() {
 		safari.self.tab.dispatchMessage('get_config');
 	}
+	
+	function _notInInput() {
+		return document.activeElement.tagName.toLowerCase() != "input";
+	}
 
 	function _registerKey() {
 		document.body.addEventListener('keydown', function(e) {
-			if (e.keyCode == getConfig().key) {
+			if (e.keyCode == getConfig().key && _notInInput()) {
 				_translateSelected();
 			}
 		});
