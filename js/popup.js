@@ -77,7 +77,14 @@ TRANSLATE.popup = (function() {
 		},
 
 		playAudio: function(href) {
-			new Audio(href).play();
+			this.audio = this.audio || new Audio();
+			this.audio.pause();
+			this.audio.currentTime=0;
+			if(this.audio.src != href) {
+				this.audio.src = href;
+				this.audio.load();
+			}
+			this.audio.play();
 		}
 	};
 })();
