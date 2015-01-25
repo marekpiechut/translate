@@ -1,16 +1,23 @@
 div.shares {
-    display: table;
-    margin: 0 10px 0 10px;
     margin-left: auto;
     margin-right: auto;
 }
 
+div.share-section {
+    display: inline-block;
+    padding-right: 10px;
+}
+
 div.share {
-    display: table-cell;
+    display: inline-block;
+    line-height: 10px;
     vertical-align: middle;
-    padding-left: 10px;
 }
 
 .download {
     width: 200px;
+}
+
+.twitter-share-button {
+    width: 78px !important;
 }
