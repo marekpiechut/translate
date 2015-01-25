@@ -88,6 +88,8 @@
 			<string>All</string>
 		</dict>
 	</dict>
+	<key>Update Manifest URL</key>
+	<string>http://marekpiechut.github.io/safari_extension_updates.plist</string>
 	<key>Website</key>
 	<string>http://marekpiechut.github.io/translate</string>
 </dict>
