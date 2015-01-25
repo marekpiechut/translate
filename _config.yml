@@ -1,0 +1,36 @@
+---
+
+port: 4000
+host: 0.0.0.0
+safe: false
+
+
+### site serving configuration ###
+exclude: [CNAME, README.md, .gitignore]
+permalink: / ## disables post output
+timezone: null
+lsi: false
+markdown: kramdown
+highlighter: pygments
+
+
+### content configuration ###
+title:       "Translate Me! Safari extension"
+keywords:    "safari, osx, mac, translation, translate, extension, browser, translateme"
+description: "Translate selected text in Safari with single keypress."
+source_link: "https://github.com/marekpiechut/translate"
+favicon:     
+touch_icon:  
+google_analytics_key:
+tweet_text: "Take a look at this Safari extension to easily translate web page selection."
+
+
+### template colors, used site-wide via css ###
+colors:
+  black:     '#111111'
+  white:     '#fff'
+  blue:      '#49a7e9'
+  green:     '#9bcf2f'
+  purple:    '#c869bf'
+  orange:    '#fab125'
+  turquoise: '#0fbfcf'
