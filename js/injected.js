@@ -31,7 +31,8 @@ TRANSLATE.pages = (function(self) {
 	}
 	
 	function _notInInput() {
-		return document.activeElement.tagName.toLowerCase() != "input";
+		var tagName = document.activeElement.tagName.toLowerCase();
+		return tagName != "input" && tagName != "textarea";
 	}
 
 	function _registerKey() {
