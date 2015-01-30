@@ -21,7 +21,7 @@ description: "Translate selected text in Safari with single keypress."
 source_link: "https://github.com/marekpiechut/translate"
 favicon:     
 touch_icon:  
-google_analytics_key:
+google_analytics_key: UA-59185106-1
 tweet_text: "Take a look at this Safari extension to easily translate web page selection."
 
 
