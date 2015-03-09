@@ -34,10 +34,15 @@ TRANSLATE.pages = (function(self) {
 		var tagName = document.activeElement.tagName.toLowerCase();
 		return tagName != "input" && tagName != "textarea";
 	}
+    
+    function _somethingSelected() {
+        var selected = _getSelectedText();
+        return selected && !/^\s*$/.test(selected);
+    }
 
 	function _registerKey() {
 		document.body.addEventListener('keydown', function(e) {
-			if (e.keyCode == getConfig().key && _notInInput()) {
+			if (e.keyCode == getConfig().key && _notInInput() && _somethingSelected()) {
 				_translateSelected();
 			}
 		});
