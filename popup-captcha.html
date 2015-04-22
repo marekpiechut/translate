@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+
+<head>
+	<link rel="stylesheet" href="popup.css" type="text/css">
+	<script src="js/prevel.js" type="text/javascript"></script>
+	<script src="js/popup-captcha.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<div class='main'>
+		<div class='text'>
+			<div class='error-header'>Ooops!</div>
+			<div class='error-message'>
+				<p>You've been translating like crazy!
+					<br/>Google thinks you're a robot.</p>
+				<p>Go <a id="captcha-link" href="http://translate.google.com/translate_a/t?text=something&tl=pl&sl=en" onclick="TRANSLATE.popupCaptcha.showCaptcha(this.getAttribute('href')); return false;">HERE</a> and enter captcha.</p>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

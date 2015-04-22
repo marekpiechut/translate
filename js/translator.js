@@ -1,4 +1,4 @@
-TRANSLATE.translator = (function(self) {
+TRANSLATE.translator = (function (self) {
 	var log = TRANSLATE.log;
 
 	function _prepareUrl(text, to, from) {
@@ -33,6 +33,25 @@ TRANSLATE.translator = (function(self) {
 		}
 	}
 
+	function _translateServiceErrors(url, code, data) {
+		switch (code) {
+		case (503):
+			return {
+				type: 'CAPTCHA',
+				message: "You've been translating like crazy! Google thinks you're a robot.",
+				details: data,
+				url: url
+			}
+		default:
+				return {
+					type: 'UNKNOWN',
+					message: 'Fatal error during translation service call',
+					details: data,
+					url: url
+				}
+		}
+	}
+
 	function _toModel(response) {
 		var model = {
 			src: response.src,
@@ -41,14 +60,14 @@ TRANSLATE.translator = (function(self) {
 		}
 
 		if (!pl.empty(response.sentences)) {
-			pl.each(response.sentences, function() {
+			pl.each(response.sentences, function () {
 				model.trans.push(this.trans);
 			})
 		}
 		if (!pl.empty(response.dict)) {
-			pl.each(response.dict, function() {
+			pl.each(response.dict, function () {
 				var terms = [];
-				pl.each(this.terms, function() {
+				pl.each(this.terms, function () {
 					terms.push(this)
 				});
 
@@ -62,7 +81,7 @@ TRANSLATE.translator = (function(self) {
 		return model;
 	}
 
-	self.translate = function(data, callback) {
+	self.translate = function (data, callback, onError) {
 		var result;
 		var from = data.from || 'auto';
 		var text = encodeURIComponent(data.text);
@@ -75,7 +94,7 @@ TRANSLATE.translator = (function(self) {
 			url: url,
 			type: 'GET',
 			dataType: 'jsonp',
-			success: function(json) {
+			success: function (json) {
 				var response = JSON.parse(json);
 				var translation = _toModel(response);
 				translation.text = data.text;
@@ -83,6 +102,10 @@ TRANSLATE.translator = (function(self) {
 				translation.translatePageUrl = _getTranslatePageUrl(data.url, to,
 					from);
 				callback(translation);
+			},
+			error: function (code, data) {
+				var error = _translateServiceErrors(url, code, data);
+				onError(error);
 			}
 		});
 	};
