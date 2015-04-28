@@ -1,5 +1,5 @@
 TRANSLATE.config = {
-	serviceUrl: "http://translate.google.com/translate_a/t?text={text}&sl={from}&tl={to}&client=x",
+	serviceUrl: "https://translate.googleapis.com/translate_a/single?client=gtx&sl={from}&tl={to}&hl={from}&dt=t&dt=bd&dj=1&source=input&q={text}",
 	target: safari.extension.settings.target,
 	source: 'auto',
 	key: safari.extension.settings.key,
