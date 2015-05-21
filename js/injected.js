@@ -35,14 +35,25 @@ TRANSLATE.pages = (function(self) {
 		return tagName != "input" && tagName != "textarea";
 	}
     
-    function _somethingSelected() {
-        var selected = _getSelectedText();
-        return selected && !/^\s*$/.test(selected);
-    }
+	function _somethingSelected() {
+			var selected = _getSelectedText();
+			return selected && !/^\s*$/.test(selected);
+	}
+	
+	function _translateKeyPressed(e) {
+		var translateKeyPressed = e.keyCode == getConfig().key
+		var modifierPressed =
+			(e.ctrlKey === false && e.altKey === false &&
+				(getConfig().key_modifier === "none" || getConfig().key_modifier === undefined)) ||
+			(e.ctrlKey === true && e.altKey === false && getConfig().key_modifier === "ctrl") ||
+			(e.ctrlKey === false && e.altKey === true && getConfig().key_modifier === "alt")
+		
+		return translateKeyPressed && modifierPressed;
+}
 
 	function _registerKey() {
 		document.body.addEventListener('keydown', function(e) {
-			if (e.keyCode == getConfig().key && _notInInput() && _somethingSelected()) {
+			if (_translateKeyPressed(e) && _notInInput() && _somethingSelected()) {
 				_translateSelected();
 			}
 		});

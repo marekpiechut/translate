@@ -3,6 +3,7 @@ TRANSLATE.config = {
 	target: safari.extension.settings.target,
 	source: 'auto',
 	key: safari.extension.settings.key,
+	key_modifier: safari.extension.settings.key_modifier,
 	
 	update: function(key, value) {
 		this[key] = value;
@@ -12,7 +13,8 @@ TRANSLATE.config = {
 		return {
 			target: TRANSLATE.config.target,
 			source: TRANSLATE.config.source,
-			key: TRANSLATE.config.key
+			key: TRANSLATE.config.key,
+			key_modifier: TRANSLATE.config.key_modifier
 		}
 	}
 };
