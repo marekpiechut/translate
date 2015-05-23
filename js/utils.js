@@ -1,5 +1,6 @@
+'use strict';
+
 (function(App) {
-	"use strict";
 
 	App.utils.safari = {
 		fireEventToTabs: function(eventName, message) {
@@ -14,5 +15,5 @@
 				}
 			}
 		}
-	}
-})(TRANSLATE)
+	};
+})(TRANSLATE);

@@ -1,3 +1,5 @@
+'use strict';
+
 TRANSLATE.translator = (function (self) {
 	var log = TRANSLATE.log;
 
@@ -12,7 +14,7 @@ TRANSLATE.translator = (function (self) {
 	function _getTranslatePageUrl(pageUrl, to, from) {
 		from = from || 'auto';
 		var url =
-			"http://translate.google.com/translate?sl={from}&tl={to}&u={url}&act=url";
+			'http://translate.google.com/translate?sl={from}&tl={to}&u={url}&act=url';
 		url = url.replace('{url}', encodeURIComponent(pageUrl));
 		url = url.replace('{from}', from);
 		url = url.replace('{to}', to);
@@ -20,16 +22,16 @@ TRANSLATE.translator = (function (self) {
 	}
 
 	function _getListenUrl(text, lang) {
-		if (text != null && !pl.empty(text)) {
+		if (text && !pl.empty(text)) {
 			var url =
-				"http://translate.google.com/translate_tts?ie=UTF-8&q={text}&tl={lang}&total={wc}&idx=0&len={len}";
+				'http://translate.google.com/translate_tts?ie=UTF-8&q={text}&tl={lang}&total={wc}&idx=0&len={len}';
 			url = url.replace('{text}', text);
 			url = url.replace('{lang}', lang);
 			url = url.replace('{wc}', text.split(/\s+/).length);
 			url = url.replace('{len}', text.length);
 			return url;
 		} else {
-			return "";
+			return '';
 		}
 	}
 
@@ -38,17 +40,17 @@ TRANSLATE.translator = (function (self) {
 		case (503):
 			return {
 				type: 'CAPTCHA',
-				message: "You've been translating like crazy! Google thinks you're a robot.",
+				message: 'You`ve been translating like crazy! Google thinks you`re a robot.',
 				details: data,
 				url: url
-			}
+			};
 		default:
-				return {
-					type: 'UNKNOWN',
-					message: 'Fatal error during translation service call',
-					details: data,
-					url: url
-				}
+			return {
+				type: 'UNKNOWN',
+				message: 'Fatal error during translation service call',
+				details: data,
+				url: url
+			};
 		}
 	}
 
@@ -57,18 +59,18 @@ TRANSLATE.translator = (function (self) {
 			src: response.src,
 			trans: [],
 			dict: []
-		}
+		};
 
 		if (!pl.empty(response.sentences)) {
 			pl.each(response.sentences, function () {
 				model.trans.push(this.trans);
-			})
+			});
 		}
 		if (!pl.empty(response.dict)) {
 			pl.each(response.dict, function () {
 				var terms = [];
 				pl.each(this.terms, function () {
-					terms.push(this)
+					terms.push(this);
 				});
 
 				model.dict.push({
@@ -88,7 +90,7 @@ TRANSLATE.translator = (function (self) {
 		var to = data.to;
 
 		var url = _prepareUrl(text, to, from);
-		TRANSLATE.log.debug("Calling URL: " + url);
+		TRANSLATE.log.debug('Calling URL: ' + url);
 		pl.ajax({
 			async: false,
 			url: url,

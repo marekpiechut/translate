@@ -1,8 +1,9 @@
+'use strict';
+
 var TRANSLATE = TRANSLATE || {};
 
 (function(App) {
-	"use strict";
-
+	
 	App.utils = {
 		createLogger: function(out) {
 

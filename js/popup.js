@@ -1,35 +1,37 @@
+'use strict';
+
 var TRANSLATE = TRANSLATE || {};
 
 TRANSLATE.popup = (function() {
 	function setOriginalText(text) {
-		var displayText = unescape(text);
+		var displayText = decodeURI(text);
 		if (nullOrEmpty(text)) {
-			pl("div.original").text("Nothing selected.");
+			pl('div.original').text('Nothing selected.');
 		} else {
 			if(displayText.length > 35) {
-				displayText = displayText.substring(0, 34) + "...";
+				displayText = displayText.substring(0, 34) + '...';
 			}
 			
-			pl("div.original").text(displayText);
+			pl('div.original').text(displayText);
 		}
-	};
+	}
 
 	function setTranslations(trans) {
-		pl("ul.translations li").remove();
-		var translationsList = pl("ul.translations");
+		pl('ul.translations li').remove();
+		var translationsList = pl('ul.translations');
 		pl.each(trans, function() {
-			translationsList.append("<li class='translation'>" + this + "</li>")
+			translationsList.append('<li class="translation">' + this + '</li>');
 		});
-	};
+	}
 
 	function setDictionaryWords(dict) {
-		var div = pl("div.dictionary");
+		var div = pl('div.dictionary');
 		div.html('');
 		pl.each(dict, function() {
-			var type = capitalize(this.form) + ":";
-			var terms = join(this.terms, ", ");
-			div.append("<div class='dictionary_word'><div class='word_type'>" + type +
-				"</div><div class='dictionary_words'>" + terms + "</div></div>");
+			var type = capitalize(this.form) + ':';
+			var terms = join(this.terms, ', ');
+			div.append('<div class="dictionary_word"><div class="word_type">' + type +
+				'</div><div class="dictionary_words">' + terms + '</div></div>');
 		});
 	}
 
@@ -42,7 +44,7 @@ TRANSLATE.popup = (function() {
 		var word, i;
 		var arrLen = arr.length;
 		var lastIdx = arrLen - 1;
-		var joined = "";
+		var joined = '';
 		for (i = 0; i < arrLen; i++) {
 			word = arr[i];
 			joined += word;
@@ -59,7 +61,7 @@ TRANSLATE.popup = (function() {
 	}
 
 	function nullOrEmpty(string) {
-		return string == null || pl.empty(pl.trim(string));
+		return !string || pl.empty(pl.trim(string));
 	}
 
 	return {
@@ -80,7 +82,7 @@ TRANSLATE.popup = (function() {
 			this.audio = this.audio || new Audio();
 			this.audio.pause();
 			this.audio.currentTime=0;
-			if(this.audio.src != href) {
+			if(this.audio.src !== href) {
 				this.audio.src = href;
 				this.audio.load();
 			}

@@ -1,8 +1,10 @@
+'use strict';
+
 TRANSLATE.config = {
-	serviceUrl: "https://translate.googleapis.com/translate_a/single?client=gtx&sl={from}&tl={to}&hl={from}&dt=t&dt=bd&dj=1&source=input&q={text}",
+	serviceUrl: 'https://translate.googleapis.com/translate_a/single?client=gtx&sl={from}&tl={to}&hl={from}&dt=t&dt=bd&dj=1&source=input&q={text}',
 	target: safari.extension.settings.target,
 	source: 'auto',
-	key: safari.extension.settings.key,
+	key: parseInt(safari.extension.settings.key),
 	key_modifier: safari.extension.settings.key_modifier,
 	
 	update: function(key, value) {
@@ -15,6 +17,6 @@ TRANSLATE.config = {
 			source: TRANSLATE.config.source,
 			key: TRANSLATE.config.key,
 			key_modifier: TRANSLATE.config.key_modifier
-		}
+		};
 	}
 };

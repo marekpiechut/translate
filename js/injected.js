@@ -1,3 +1,5 @@
+'use strict';
+
 var TRANSLATE = TRANSLATE || {};
 
 TRANSLATE.pages = (function(self) {
@@ -21,7 +23,7 @@ TRANSLATE.pages = (function(self) {
 
 	function _listener(msg) {
 		var fn = listeners[msg.name] || function(msg) {
-				TRANSLATE.log.error("no page listener for name: " + msg.name);
+				TRANSLATE.log.error('no page listener for name: ' + msg.name);
 			};
 		fn(msg);
 	}
@@ -32,7 +34,7 @@ TRANSLATE.pages = (function(self) {
 	
 	function _notInInput() {
 		var tagName = document.activeElement.tagName.toLowerCase();
-		return tagName != "input" && tagName != "textarea";
+		return tagName !== 'input' && tagName !== 'textarea';
 	}
     
 	function _somethingSelected() {
@@ -41,12 +43,12 @@ TRANSLATE.pages = (function(self) {
 	}
 	
 	function _translateKeyPressed(e) {
-		var translateKeyPressed = e.keyCode == getConfig().key
+		var translateKeyPressed = e.keyCode === getConfig().key;
 		var modifierPressed =
 			(e.ctrlKey === false && e.altKey === false &&
-				(getConfig().key_modifier === "none" || getConfig().key_modifier === undefined)) ||
-			(e.ctrlKey === true && e.altKey === false && getConfig().key_modifier === "ctrl") ||
-			(e.ctrlKey === false && e.altKey === true && getConfig().key_modifier === "alt")
+				(getConfig().key_modifier === 'none' || getConfig().key_modifier === undefined)) ||
+			(e.ctrlKey === true && e.altKey === false && getConfig().key_modifier === 'ctrl') ||
+			(e.ctrlKey === false && e.altKey === true && getConfig().key_modifier === 'alt');
 		
 		return translateKeyPressed && modifierPressed;
 }
@@ -78,7 +80,7 @@ TRANSLATE.pages = (function(self) {
 	return {
 		init: function() {
 			TRANSLATE.log = TRANSLATE.utils.createLogger(function(msg) {
-				console.log(msg)
+				console.log(msg);
 			});
 			safari.self.addEventListener('message', _listener, false);
 			_reloadConfig();

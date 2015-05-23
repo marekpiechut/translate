@@ -1,3 +1,5 @@
+'use strict';
+
 (function (self) {
 	var listeners = {
 		translate: function (e) {
@@ -19,22 +21,22 @@
 	};
 
 	function _commandListener(e) {
-		listeners[e.command].call(this, e.message);
+		listeners[e.command](e.message);
 	}
 
 	function _messageListener(e) {
-		listeners[e.name].call(this, e.message);
+		listeners[e.name](e.message);
 	}
 
 	function _showTranslation(data) {
-		TRANSLATE.log.debug("Received translation: " + JSON.stringify(data));
+		TRANSLATE.log.debug('Received translation: ' + JSON.stringify(data));
 		safari.extension.popovers.translation.contentWindow.TRANSLATE.popup.dataChanged(data);
 		safari.extension.toolbarItems[0].popover = safari.extension.popovers.translation;
 		safari.extension.toolbarItems[0].showPopover();
 	}
 
 	function _handleError(error) {
-		TRANSLATE.log.debug("Translation failed: " + JSON.stringify(error));
+		TRANSLATE.log.debug('Translation failed: ' + JSON.stringify(error));
 		if (error.type === 'CAPTCHA') {
 			safari.extension.popovers.captcha.contentWindow.TRANSLATE.popupCaptcha.setLinkUrl(error.url);
 			safari.extension.toolbarItems[0].popover = safari.extension.popovers.captcha;
@@ -50,11 +52,11 @@
 
 	self.init = function () {
 		safari.application.addEventListener(
-			"command", _commandListener, false);
+			'command', _commandListener, false);
 		safari.application.addEventListener(
-			"message", _messageListener, false);
+			'message', _messageListener, false);
 		safari.extension.settings.addEventListener(
-			"change", _configChangeListener, false);
+			'change', _configChangeListener, false);
 	};
 
 	return self;
