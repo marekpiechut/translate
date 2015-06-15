@@ -27,20 +27,33 @@
 	function _messageListener(e) {
 		listeners[e.name](e.message);
 	}
+	
+	function _getCurrentToolbarItem() {
+		var toolbarItems = safari.extension.toolbarItems;
+		if(toolbarItems.length === 1) {
+			return toolbarItems[0];
+		} else {
+			return toolbarItems.filter(function(toolbarItem) {
+				return toolbarItem.browserWindow == safari.application.activeBrowserWindow;
+			})[0];
+		}
+	}
 
 	function _showTranslation(data) {
 		TRANSLATE.log.debug('Received translation: ' + JSON.stringify(data));
 		safari.extension.popovers.translation.contentWindow.TRANSLATE.popup.dataChanged(data);
-		safari.extension.toolbarItems[0].popover = safari.extension.popovers.translation;
-		safari.extension.toolbarItems[0].showPopover();
+		var toolbarItem = _getCurrentToolbarItem();
+		
+		toolbarItem.popover = safari.extension.popovers.translation;
+		toolbarItem.showPopover();
 	}
 
 	function _handleError(error) {
 		TRANSLATE.log.debug('Translation failed: ' + JSON.stringify(error));
 		if (error.type === 'CAPTCHA') {
 			safari.extension.popovers.captcha.contentWindow.TRANSLATE.popupCaptcha.setLinkUrl(error.url);
-			safari.extension.toolbarItems[0].popover = safari.extension.popovers.captcha;
-			safari.extension.toolbarItems[0].showPopover();
+			toolbarItem.popover = safari.extension.popovers.captcha;
+			toolbarItem.showPopover();
 		}
 	}
 
