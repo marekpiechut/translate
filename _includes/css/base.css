@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 /*
 * Skeleton V1.2
 * Copyright 2011, Dave Gamache
@@ -52,7 +54,8 @@
 ================================================== */
 	body {
 		background: #fff;
-		font: 14px/21px "Raleway" "HelveticaNeue-Light", Arial, sans-serif;
+		font-family: "Raleway", "HelveticaNeue-Light", Arial, sans-serif;
+		font-size: 14px;
 		color: #444;
 		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
 		-webkit-text-size-adjust: 100%;
